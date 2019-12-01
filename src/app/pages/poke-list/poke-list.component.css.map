@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "poke-list.component.scss"
+    ],
+    "names": [],
+    "file": "poke-list.component.css"
+}
