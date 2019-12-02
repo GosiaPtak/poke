@@ -11,7 +11,8 @@
                  formControlName="pokemon">
         </mat-form-field>
         <button mat-stroked-button
-                color="primary">Catch it!</button>
+                color="primary"
+                (click)="findPokemon(searchPoke.get('pokemon').value)">Catch it!</button>
       </div>
     </form>
   </div>
