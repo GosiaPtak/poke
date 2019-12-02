@@ -1,3 +1,15 @@
-<button *ngFor="let offsetValue of offsetValues; let i = index"
-(click)="sendOffset(offsetValue)"> {{i+1}}
+<button mat-button
+        (click)="setPage(action='previous')">
+    <mat-icon aria-hidden="false"
+              aria-label="Next">arrow_left</mat-icon>
+</button>
+<button mat-button
+        [ngClass]="{'current-page': currentPage == i}"
+        *ngFor="let page of pages | slice:0:limitOfPages; let i = index"
+        (click)="setCurrentPage(i)"> {{i+1}}
+</button>
+<button mat-button
+        (click)="setPage(action='next')">
+    <mat-icon aria-hidden="false"
+              aria-label="Next">arrow_right</mat-icon>
 </button>

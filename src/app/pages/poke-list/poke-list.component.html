@@ -1,6 +1,24 @@
 <app-search></app-search>
-<div fxLayout="row">
-    <button type="button" *ngFor="let pokemon of listOfPoke" (click)="goToDetails(pokemon.id)">{{pokemon.name}}</button>
+<div fxFlex>
+    <div fxLayout="row"
+         align="center"
+         fxLayoutGap="15px">
+        <div *ngFor="let pokemon of listOfPoke"
+             class="div--display">
+            <button mat-stroked-button
+                    (click)="goToDetails(pokemon.id)">{{pokemon.name}}</button>
+        </div>
+
+    </div>
+    <div>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxLayout="row"
+         align="center"
+         fxLayoutGap="15px">
+        <app-pagination *ngIf="numberOfResults !== 0"
+                        [numberOfResults]="numberOfResults"
+                        [resultsPerPage]="limit"
+                        (setParams)="getParams($event)"></app-pagination>
+    </div>
 </div>
-<app-pagination *ngIf="numberOfResults !== 0" [numberOfResults]="numberOfResults" [resultsPerPage]="limit" [limitOfPages]="10"
- (setLimit)="getLimit($event)" (setOffset)="getOffset($event)"></app-pagination>
