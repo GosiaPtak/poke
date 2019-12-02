@@ -1,3 +1,6 @@
 <app-search></app-search>
-<button>Read</button>
-<app-pagination></app-pagination>
+<div fxLayout="row">
+    <button type="button" *ngFor="let pokemon of listOfPoke" (click)="goToDetails(pokemon.id)">{{pokemon.name}}</button>
+</div>
+<app-pagination *ngIf="numberOfResults !== 0" [numberOfResults]="numberOfResults" [resultsPerPage]="limit" [limitOfPages]="10"
+ (setLimit)="getLimit($event)" (setOffset)="getOffset($event)"></app-pagination>

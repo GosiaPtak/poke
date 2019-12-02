@@ -1,6 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
-import { EventEmitter } from 'events';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
@@ -8,12 +6,18 @@ import { EventEmitter } from 'events';
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit {
-  length = 100;
-  pageSize = 10;
 
-  pageEvent: PageEvent;
+@Output() setLimit: EventEmitter<number>  = new EventEmitter();
+@Output() setOffset: EventEmitter<number>  = new EventEmitter();
+@Input() numberOfResults: number;
+@Input() resultsPerPage: number;
+@Input() limitOfPages: number;
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.numberOfResults, this.resultsPerPage, this.limitOfPages);
+  }
+
 }

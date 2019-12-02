@@ -14,9 +14,17 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PokeListComponent } from './pages/poke-list/poke-list.component';
 import { SearchComponent } from './pages/poke-list/search/search.component';
 import { PaginationComponent } from './pages/poke-list/pagination/pagination.component';
+import { PokeDetailsComponent } from './pages/poke-details/poke-details.component';
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, PokeListComponent, SearchComponent, PaginationComponent],
+  declarations: [
+    AppComponent,
+    HomePageComponent,
+    PokeListComponent,
+    SearchComponent,
+    PaginationComponent,
+    PokeDetailsComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
