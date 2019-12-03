@@ -1,24 +1,28 @@
-<app-search></app-search>
-<div fxFlex>
-    <div fxLayout="row"
-         align="center"
-         fxLayoutGap="15px">
-        <div *ngFor="let pokemon of listOfPoke"
-             class="div--display">
-            <button mat-stroked-button
-                    (click)="goToDetails(pokemon.id)">{{pokemon.name}}</button>
+<div class="container">
+    <div fxLayout="column"
+         fxFlexFill
+         fxLayoutAlign="center center"
+         fxLayoutGap="1em">
+        <div fxLayout="row"
+             fxLayoutGap="15px">
+            <app-search (inputPokeId)="findPokemon($event)"></app-search>
         </div>
-
-    </div>
-    <div>
-    </div>
-    <mat-divider></mat-divider>
-    <div fxLayout="row"
-         align="center"
-         fxLayoutGap="15px">
-        <app-pagination *ngIf="numberOfResults !== 0"
-                        [numberOfResults]="numberOfResults"
-                        [resultsPerPage]="limit"
-                        (setParams)="getParams($event)"></app-pagination>
+        <div fxLayout="row"
+             fxLayoutGap="15px">
+            <div *ngFor="let pokemon of (listOfPokemons | filter:pokeId | slice:slicer.start:slicer.end)">
+                <button mat-stroked-button
+                        (click)="goToDetails(pokemon.id)">
+                    {{pokemon.name}}
+                </button>
+            </div>
+        </div>
+        <div fxLayout="row"
+             fxLayoutGap="15px">
+            <app-pagination *ngIf="numberOfResults !== 0 && !pokeId"
+                            [numberOfResults]="numberOfResults"
+                            [resultsPerPage]="limit"
+                            (setSelectedPage)="getSelectedPage($event)">
+            </app-pagination>
+        </div>
     </div>
 </div>

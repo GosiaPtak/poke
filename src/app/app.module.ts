@@ -11,7 +11,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FilterPipe } from './shared/pipes/filter.pipe';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PokeListComponent } from './pages/poke-list/poke-list.component';
 import { SearchComponent } from './pages/poke-list/search/search.component';
@@ -25,7 +26,8 @@ import { PokeDetailsComponent } from './pages/poke-details/poke-details.componen
 		PokeListComponent,
 		SearchComponent,
 		PaginationComponent,
-		PokeDetailsComponent
+		PokeDetailsComponent,
+		FilterPipe
 	],
 	imports: [
 		BrowserModule,
@@ -37,9 +39,9 @@ import { PokeDetailsComponent } from './pages/poke-details/poke-details.componen
 		HttpClientModule,
 		ReactiveFormsModule,
 		FormsModule,
-		MatPaginatorModule,
 		MatCardModule,
-		MatDividerModule
+		MatDividerModule,
+		FlexLayoutModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

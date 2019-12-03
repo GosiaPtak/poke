@@ -1,19 +1,9 @@
-<div fxFlex>
-  <div fxLayout="column"
-       fxLayoutGap="15px"
-       align="center">
-    <form class="poke-form"
-          [formGroup]="searchPoke">
-      <div>
-        <mat-form-field class="input-full-width">
-          <input matInput
-                 placeholder="Find your pokemon"
-                 formControlName="pokemon">
-        </mat-form-field>
-        <button mat-stroked-button
-                color="primary"
-                (click)="findPokemon(searchPoke.get('pokemon').value)">Catch it!</button>
-      </div>
-    </form>
-  </div>
-</div>
+<form class="poke-form"
+      [formGroup]="searchPoke">
+  <mat-form-field class="input-full-width">
+    <input matInput
+           placeholder="Find your pokemon"
+           formControlName="pokemon"
+           (keyup)="findPokemon(searchPoke.get('pokemon').value)">
+  </mat-form-field>
+</form>

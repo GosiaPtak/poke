@@ -1,35 +1,58 @@
-<div fxLayout="column"
-     fxLayoutGap="15px"
-     align="center">
-    <mat-card class="example-card"
-              *ngIf="pokeDetails">
-        <mat-card-header>
-            <mat-card-title>{{pokeId}} {{ pokeDetails.name }}</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image
-             [src]="pokeDetails.sprites.front_default"
-             alt="{{ pokeDetails.sprites.front_default }}">
-        <mat-card-content>
-            <p *ngFor="let stat of pokeDetails.stats | keyvalue">
-                {{stat | json}}
-            </p>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-button
-                    (click)="choosePokemon(action='previous')">
-                <mat-icon aria-hidden="false"
-                          aria-label="Next">arrow_left</mat-icon>
-                Previous
-            </button>
-            <button mat-button
-                    routerLink="/">
-                <mat-icon aria-hidden="false"
-                          aria-label="home">home</mat-icon>
-            </button>
-            <button mat-button
-                    (click)="choosePokemon(action='next')">Next<mat-icon aria-hidden="false"
-                          aria-label="Next">arrow_right</mat-icon>
-            </button>
-        </mat-card-actions>
-    </mat-card>
-</div>
+<div class="container pokemon__details--card"
+     *ngIf="pokeDetails">
+    <div fxLayout="column"
+         fxFlexFill
+         fxLayoutAlign="center center"
+         fxLayoutGap="10px">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>
+                    <h4>{{pokeId}} {{ pokeDetails.name }}</h4>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <img [src]="pokeDetails.sprites.front_default"
+                 alt="{{ pokeDetails.sprites.front_default }}">
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <h4>Pokemon Stats</h4>
+                <div fxLayout="column"
+                     fxFlexFill
+                     fxLayoutAlign="start center"
+                     fxLayoutGap="10px">
+                    <div fxLayout="row"
+                         fxLayoutGap="10px"
+                         *ngFor="let stat of pokeDetails.stats">
+                        <div fxFlex="120px">
+                            {{stat.stat.name}}
+                        </div>
+                        <div>
+                            Base: {{stat.base_stat}}
+                        </div>
+                        <div>
+                            Effort: {{stat.effort}}
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-divider></mat-divider>
+            <mat-card-actions>
+                <button mat-button
+                        (click)="choosePokemon(action='previous')">
+                    <mat-icon aria-hidden="false"
+                              aria-label="Next">arrow_left</mat-icon>
+                    Previous
+                </button>
+                <button mat-button
+                        routerLink="/">
+                    <mat-icon aria-hidden="false"
+                              aria-label="home">home</mat-icon>
+                </button>
+                <button mat-button
+                        (click)="choosePokemon(action='next')">Next<mat-icon aria-hidden="false"
+                              aria-label="Next">
+                        arrow_right</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>

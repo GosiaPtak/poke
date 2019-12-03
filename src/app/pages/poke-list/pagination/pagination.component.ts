@@ -6,7 +6,7 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 	styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit {
-	@Output() setParams: EventEmitter<{}> = new EventEmitter();
+	@Output() setSelectedPage: EventEmitter<{}> = new EventEmitter();
 
 	@Input() numberOfResults: number;
 	@Input() resultsPerPage: number;
@@ -25,13 +25,13 @@ export class PaginationComponent implements OnInit {
 	}
 	setCurrentPage(displayValue) {
 		this.currentPage = displayValue;
-		this.setParams.emit({ limit: this.resultsPerPage, offset: displayValue * 10 });
+		this.setSelectedPage.emit(this.currentPage);
 	}
 	setPage(action) {
 		if (action === 'previous' && this.currentPage > 0) {
 			this.currentPage = this.currentPage - 1;
 			this.setCurrentPage(this.currentPage);
-		} else if (action === 'next' && this.currentPage < 10) {
+		} else if (action === 'next' && this.currentPage < 9) {
 			this.currentPage = this.currentPage + 1;
 			this.setCurrentPage(this.currentPage);
 		}
